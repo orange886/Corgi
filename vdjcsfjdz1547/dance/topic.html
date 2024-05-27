@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <title>{cscms:title} - 柯基DJ音乐网 www.kejidj.com</title>
+    <meta name="keywords" content="{cscms:keywords}" />
+    <meta name="description" content="{cscms:description}" />
+    <link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/public.css" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="mobile-agent" content="format=html5" />
+
+
+    <script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+    <script type="text/javascript" src="{cscms:tempurl}js/dance.js"></script>
+</head>
+<body>
+    {cscms:indexhead}
+
+<div id="f2">
+    <div class="page_body">
+        <!--左侧开始-->
+        <div class="djshow_list_left">
+            <div class="djshow_list_left_ct">
+                <div class="clear">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td width="40">
+                                    <div class="path_ico"></div>
+                                </td>
+                                <td>
+                                    <div class="path_ct">目前位置：<a href="/">{cscms:webname}</a> > <a href="{cscmsphp}linkurl('topic','id',1,1,'dance');{/cscmsphp}" title="精品专辑">精品专辑</a>
+                                    </div>
+                                    <div class="lines"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="h10"></div>
+                <!--音乐制作人-->
+                <div class="djshow_content">
+                    <div class="djshow_content_type"> <span>音乐制作人</span>
+                        <ul class="clearfix">
+                            <li class="{if:'{cscms:fid}'=='id'}flon{else}flof{end if}"> <a href="{cscmsphp}linkurl('topic','id',1,1,'dance');{/cscmsphp}">最新加入</a></li>
+                            <li class="{if:'{cscms:fid}'=='hits'}flon{else}flof{end if}"> <a href="{cscmsphp}linkurl('topic','hits',1,1,'dance');{/cscmsphp}">热门专辑</a></li>
+                        </ul>
+                    </div>
+                    <div class="lines"></div>
+                    <div class="h10"></div>
+                    <div class="djshow_contentlist">
+                        {cscms:topic table="dance_topic" pagesize="10"}
+                        <table width="730" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <!--图片-->
+                                    <td rowspan="3" width="110" height="110" align="center">
+                                        <a href="[topic:url link=topic/show]" target="_blank" title="[topic:name]">
+                                            <img src="[topic:pic dir=dancetopic]" width="110" height="110">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="18"></td>
+                                    <td> <a class="djshow_contentlist_name" href="[topic:url link=topic/show]" target="_blank" title="[topic:name]">[topic:name]</a>
+                                    </td>
+                                    <td width="75" align="left" class="djshow_contentlist_msg">[topic:diqu]</td>
+                                    <td width="70" align="left" class="djshow_contentlist_msg"><span class="judgeDate" data="[topic:addtime style=Y/m/d]">[topic:addtime style=Y/m/d]</span>
+                                    </td>
+                                    <td width="60" align="center" class="djshow_contentlist_msg">[topic:hits]</td>
+                                    <td width="250"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td colspan="5">
+                                        <table border="0" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="6" height="7"></td>
+                                                </tr>
+                                                {cscmstype:dance table="dance" where="tid=[topic:id]" sort="addtime" loop="3"}
+                                                <tr>
+                                                    <td width="14"><span class="arrow"></span>
+                                                    </td>
+                                                    <td width="400"> <a class="djshow_contentlist_dj" href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                                                    </td>
+                                                    <td align="center" class="djshow_contentlist_msg" style="padding:0px 10px;" width="70">[dance:hits]</td>
+                                                    <td style="padding:0px 10px;"> <span class="djshow_icodown" dataid="[dance:id]"><a href="javascript:danceDown('[dance:url zdy=dance,id,down,id]')" title="下载舞曲"></a></span>
+                                                        <span class="djshow_icocar" dataid="[dance:id]"><a href="javascript:dance.danceDing([dance:id]);" title="顶一下"></a></span>
+                                                        <span class="djshow_icofav" dataid="[dance:id]"><a href='javascript:danceFav([dance:id])' title="收藏舞曲"></a></span>
+                                                    </td>
+                                                </tr>
+                                                {if:'[dance:i]'<'3'}
+	                                                <tr>
+	                                                    <td colspan="6" height="7"></td>
+	                                                </tr>
+                                                {end if}
+                                                {/cscmstype:dance}
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr height="20">
+                                    <td colspan="2"></td>
+                                    <td height="10" align="center" colspan="5">
+                                        <div class="lines"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        {/cscms:topic}
+                        </table>
+                        <div class="list_split_page">
+                            {cscms:pagenum len=6}
+	                        <a href="{cscms:pagedown}"> > </a>
+	                        {cscms:pagelist}
+	                        <li class="e"><span>共 <b>{cscms:pagedata}</b> 个记录 {cscms:pagenow}/{cscms:pagecout}页</span>
+	                        </li>
+                        </div>
+                        <div class="h10"></div>
+                    </div>
+                </div>
+                <!--音乐制作人结束-->
+            </div>
+        </div>
+        <!--左侧结束-->
+        <!--右侧开始-->
+        <div class="djshow_list_right">
+            <div class="djshow_list_right_ct">
+                <!--作者专辑右上U盘广告-->
+                <!--电台右侧广告-->
+                <style>
+                    #playBox {width: 215px;height: 90px;}
+                    #playBox .smalltitle {width: 215px;}
+                </style>
+                <div id="playBox">
+                    <div class="pre" style="display:none"></div>
+                    <div class="next" style="display:none"></div>
+                    <div class="smalltitle" style="display:none">
+                        <ul>
+                            <li class="thistitle"></li>
+                        </ul>
+                    </div>
+                    <ul class="oUlplay">
+                        <li>
+                            <a href="javascript:;" target="_blank">
+                                <img src="{cscms:tempurl}images/upan.png" width="215" height="90">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="h15"></div>
+                <div class="lines"></div>
+                <div class="h10"></div>
+                <!--专辑最新舞曲-->
+                <div class="djshow_newalbum_list">
+                    <div class="djshow_newalbum_list_title"> <span>专辑最新舞曲</span>
+                    </div>
+                    <div class="h10"></div>
+                    <div class="lines"></div>
+                    <div class="h10"></div>
+                    <ul class="clearfix">
+                    	{cscms:dance table="dance" where="tid>0" sort="addtime" order="desc" loop="10"}
+                        <li class="first">
+                            <div class="djshow_newalbum_list_img">
+                                <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">
+                                    <img src="[dance:pic dir=dance]">
+                                </a>
+                            </div>
+                            <p><a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]" style="line-height:20px;">[dance:name]</a>
+                            </p>
+                        </li>
+                        <div class="h10"></div>
+                        <div class="lines"></div>
+                        <div class="h10"></div>
+                        {/cscms:dance}
+                    </ul>
+                </div>
+                <!--专辑最新舞曲end-->
+                <!--作者专辑右APP-->
+                <!--djshow APP-->
+                <div>
+                    <a href="javascript:;" target="_blank">
+                        <img src="{cscms:tempurl}images/radio_upan.gif" width="215" border="0">
+                    </a>
+                </div>
+                <div class="h10"></div>
+                <div class="lines"></div>
+                <div class="h10"></div>
+                <!--专辑舞曲热载榜-->
+                <div class="djshow_ranking_list">
+                    <div class="djshow_ranking_list_title">
+                        <p>专辑舞曲热载榜</p>
+                    </div>
+                    <div class="h10"></div>
+                    <div class="list_hot_down">
+                    	{cscms:dance table="dance" where="tid>0" sort="hits" order="desc" loop="10"}
+                        <dl> <dt class="num[dance:i]"></dt>
+                            <dd class="redline"> <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                            </dd>
+                        </dl>
+                        {/cscms:dance}
+                    </div>
+                </div>
+                <!--专辑舞曲热载榜end-->
+            </div>
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+	<script type="text/javascript">judgeDate()</script>
+    {cscms:indexbottom}
+</body>
+</html>

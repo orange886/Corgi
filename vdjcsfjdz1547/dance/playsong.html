@@ -1,0 +1,471 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>{cscms:webname}音乐盒 - 柯基DJ音乐网 www.kejidj.com</title>
+		<link type="text/css" rel="stylesheet" href="{cscms:tempurl}song/css/style.css">
+<script type="text/javascript" src="/tpl/pc/user/bbdj41/js/jquery.emot.js"></script>
+<script type="text/javascript" src="/tpl/pc/user/bbdj41/js/jquery.poshytip.js"></script>
+<script type="text/javascript" src="/tpl/pc/user/bbdj41/js/common.js"></script>
+<script type="text/javascript" src="/tpl/pc/user/bbdj41/js/user.js"></script>
+    <script type="text/javascript" src="/tpl/pc/skins/uuudj/js/common.js"></script>
+		<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" href="{cscms:tempurl}song/css/ie.css">
+
+		<![endif]-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	</head>
+	<body class="mbox-wraper" id="index">
+	<!--[if lte IE 8]><p class="browsehappy">你在使用<strong>过时</strong>的浏览器，界面无法正常显示， 请安装IE8以上浏览器、谷歌、360、火狐、搜狗、百度等高速浏览器，以获得更好的体验！</p><![endif]-->
+<div class="topbanner_bg"  >
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+
+<td width="200"><div style="height:60px;">
+<a href="/" target="_blank"><img src="{cscms:indextempurl}images/hlogo.png" style="margin-left:11px;"></a>
+</div></td>
+
+<td  class="an" width="160"><div class="nvs2 bc" id="dhcdys"><a  class="cc" id="dhcd" style="color:#fff">网站导航</a>
+<div class="dh" style="position:absolute; z-index:999; background-color:#ffffff; margin-left:-1px;_margin-left:-15px; orphans:inherit; display:none">
+{cscms:class table="dance_list" field="id,name" loop="10" order="asc"}
+<ul style='border:0px;'>
+<li class='b'><a href="[class:url zdy=dance,id,lists,id]" target='_blank'>[class:name]</a></li>
+</ul>
+{/cscms:class}
+
+</div>
+</div></td>
+<td  width="380"><div style="float:left">
+<form action="{cscms:path}index.php/dance/search" method="get" name="serall" id="serall" target="_blank" onsubmit="return" style="margin:0px" enctype="application/x-www-form-urlencoded">
+<input type="text" name="key" class="serbox" id="key" placeholder="请输入关键词....." style="_width:220px;"/>
+</form>
+</div>
+<div  style="float:left">
+<input type="button" name="buttons" onclick="tosearch()" class="btn btn-small " id="button" value="搜索" style=" background-color:#000000;color:#FFFFFF;border-radius:0px; height:34px;_height:32px;_width:90px;" />
+</div>
+<script>
+function tosearch(){
+if ($("#key").val().length<1){
+	alert("请输入关键词进行搜索.....")
+	return false;
+}else{
+	document.getElementById("serall").submit();
+}
+}
+</script>
+</td>
+                            {if:'{cscms:uid}'=='0'}
+<td align="right" style="color:#262626; font-size:12px; "><a href="{cscms:loginlink}" class="btn  btn-primary btn-small"  style="border-radius:0px; color:#FFFFFF"> 立即登录</span>
+                            {else}
+<td align="right" style="color:#262626; font-size:12px; "><a href="{cscmsphp}spacelink('space','user');{/cscmsphp}"  class="btn  btn-primary btn-small"  style="border-radius:0px; color:#FFFFFF"> 会员中心</span>
+                            {end if}
+
+</a>   
+ {if:'{cscms:uid}'=='0'}
+<a href="{cscms:reglink}"  class="btn btn-warning btn-small"  style="border-radius:0px; color:#FFFFFF"> 注册账号 </a>
+  {else}
+<a href="{cscmsphp}spacelink('dance,add','dance');{/cscmsphp}"   class="btn btn-warning btn-small"  style="border-radius:0px; color:#FFFFFF"> 上传舞曲 </a>
+  {end if}
+     </td>
+</tr>
+</table>
+<script language="javascript">
+$("#dhcdys").hover(function(){$("#dhcdys").attr("class","nvs3 bc");$(".dh").show()},function(){$("#dhcdys").attr("class","nvs2 bc");$(".dh").hide()})
+</script>
+</div>
+		<div class="mbox-lyout-bd js-box-wrap" style="height:316px auto;">
+		<div class="frame-r mbox-player-frame js-player-status pl-loaded ">
+		<div class="frame-inner player-unload " style="display:none; ">
+		<div class="cls ">
+		<div class="unload-txt"><h4>很抱歉，您当前使用的浏览器不支持音乐盒的播放</h4><p>推荐您使用兼容性更好的浏览器，获得更好的上网体验~</p></div>
+		<div class="unload-browser ">
+		<ul class="unload-browser-innner ">
+		    <li><a href="http://se.360.cn/" target="_blank" class="b-aq">360浏览器</a></li>
+			<li><a href="https://www.google.com/intl/zh-CN/chrome/browser/" target="_blank" class="b-gg">谷歌浏览器</a></li>
+			<li><a href="http://firefox.com.cn/" target="_blank" class="b-ff">火狐浏览器</a></li>
+		</ul>
+		</div>
+		</div>
+		</div>
+		<div class="mbox-panel" style="display:block;">
+			<div class="mb-ie6"></div>
+			<div id="player"></div>
+			<div class="mb-relate-wrap js-player-musicInfo" style="overflow:visible;z-index:1;">
+				<div class="mb-info">
+					<div class="mb-info-wrap-default" style="display:block;">
+						<div class="pic"><img src="{cscms:tempurl}song/images/t014b8fcb4490d44a67.png" width="54" height="54"></div>
+						<div class="song-wrap">
+							<div class="song">
+								<div class="default">
+									<p>音乐无处不在，快乐随之而来~</p>
+									<p>欢迎使用{cscms:webname}音乐盒</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mb-info-wrap js-player-img-wrap" style="display:none;">
+						<div class="pic">
+							<img id="tpic" src="{cscms:tempurl}song/images/t0193ec72f4485d45cd.png"
+							class="js-player-musicImg" width="50" height="50">
+
+						</div>
+						<div class="song-wrap">
+							<div class="song">
+								<div id="musicname" class="name js-player-musicName">
+									牵挂你的人是我
+								</div>
+								<ul class="source">
+									<li>
+										<span class="label">
+											歌手：
+										</span>
+										<a id="singer" href="#" target="_blank" class="js-player-musicSinger">
+										</a>
+									</li>
+									<li>
+										<span class="label">
+											专辑：
+										</span>
+										<a id="topic" href="" class="js-player-from" target="_blank">
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mb-oper" style="margin-right:30px;display:none;">
+					<ul class="mb-oper-inner">
+						<li class="lyric js-player-lyric">
+							<a href="#lyric" hidefocus="true" title="歌词" class="vc-btn">
+								<span class="vc-btn-inner">
+									歌词
+								</span>
+							</a>
+						</li>
+						<li class="share js-player-share">
+							<a id="share" href="#share" hidefocus="true" title="分享" class="vc-btn">
+								<span class="vc-btn-inner">
+									分享
+								</span>
+							</a>
+							<div class="tips-player tips-player-share js-player-share-tips" style="display: none;width:170px;left: -80px; top: -6px; opacity: 1;"
+							progid:dximagetransform.microsoft.alpha(opacity="0)";filter:alpha(opacity=0);opacity:"
+							0; "=" ">
+							<div class="tips-cont ">
+							<div class="content">
+							    <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://{cscms:path}index.php/dance/play/%id%&desc=%desc%&summary=&pics=%pic%&site={cscms:webname}&title={cscms:webname}" class="ico-weibo ico-qzone js-open-share" data-type="qzone"></a>
+							    <span class="gap">|</span>
+								<a href="http://share.v.t.qq.com/index.php?c=share&a=index&url=http://{cscms:path}index.php/dance/play/%id%&title=%desc%&pic=%pic%" class="ico-weibo ico-qq js-open-share" data-type="tqq"></a>
+								<span class="gap">|</span>
+								<a href="http://service.weibo.com/share/share.php?title=%desc%&url=http://{cscms:path}index.php/dance/play/%id%&source=bookmark&appkey=4256128524&pic=%pic%&ralateUid=" class="ico-weibo ico-sina js-open-share" data-type="sina"></a>
+							</div>
+				</div>
+				<div class="tips-arrow">
+				</div>
+			</div>
+			</li>
+			<li class="download">
+				<a href="#dl" hidefocus="true" title="下载" class="vc-btn js-player-dl"
+				monitor-id="4" data-id="">
+					<span class="vc-btn-inner">
+						下载
+					</span>
+				</a>
+			</li>
+			<li class="love js-player-favor" monitor-id="3" data-id="">
+				<a href="#love" hidefocus="true" title="喜欢" class="vc-btn">
+					<span class="vc-btn-inner">
+						喜欢
+					</span>
+				</a>
+			</li>
+			</ul>
+		</div>
+		<div class="mb-play">
+			<ul class="play-btns">
+				<li class="prev js-player-prev" monitor-id="7">
+					<a href="#" hidefocus="true" class="vc-btn" title="上一首[←]">
+						<span class="vc-btn-inner">
+							上一首[←]
+						</span>
+					</a>
+				</li>
+				<li class="play js-player-play stop" mid="0">
+					<a href="#" hidefocus="true" class="vc-btn" title="暂停[空格键]">
+						<span class="vc-btn-inner">
+							暂停[空格键]
+						</span>
+					</a>
+				</li>
+				<li class="play js-player-play stops" style="display:none">
+					<a href="#" hidefocus="true" class="vc-btn" title="播放[空格键]">
+						<span class="vc-btn-inner">
+							播放[空格键]
+						</span>
+					</a>
+				</li>
+				<li class="next js-player-next" monitor-id="8">
+					<a href="#" hidefocus="true" class="vc-btn" title="下一首[→]">
+						<span class="vc-btn-inner">
+							下一首[→]
+						</span>
+					</a>
+				</li>
+			</ul>
+			<div class="play-mode">
+				<a href="#" hidefocus="true" title="顺序播放" class="vc-btn js-player-mode-show btn-cycle"
+				sid="btn-cycle">
+					<span class="vc-btn-inner">
+						当前播放模式
+					</span>
+				</a>
+				<ul class="play-mode-inner">
+					<li class="random">
+						<a href="#" hidefocus="true" title="随机播放" class="vc-btn js-player-mode" sid="3">
+							<span class="vc-btn-inner">随机播放</span>
+						</a>
+					</li>
+					<li class="single">
+						<a href="#" hidefocus="true" title="单曲循环" class="vc-btn js-player-mode" sid="2">
+							<span class="vc-btn-inner">单曲循环</span>
+						</a>
+					</li>
+					<li class="cycle">
+						<a href="#" hidefocus="true" title="顺序播放" class="vc-btn curr js-player-mode" sid="1">
+							<span class="vc-btn-inner">顺序播放</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="volume">
+				<a href="#" title="静音" hidefocus="true" class="vc-btn btn-mute js-player-volume-mute btn-umuted">
+					<span class="vc-btn-inner">静音</span>
+				</a>
+				<a href="#" title="打开声音" hidefocus="true" class="vc-btn btn-mute js-player-volume-mute btn-muted" style="display:none">
+					<span class="vc-btn-inner">打开声音</span>
+				</a>
+				<div class="volume-inner js-player-volume-blk">
+					<div class="vol-slider-wrap js-player-volume-position">
+						<div class="vol-slider js-player-volume-strip">
+							<div class="vol-slider-handle-wrap">
+								<span class="vol-slider-handle vol-slider-anim js-player-volume-slider" style="left:50%;">
+									<span></span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="time">
+				<span class="t-now js-play-time-now">00:00</span>
+				<span class="sep">/</span>
+				<span class="t-total js-play-time-total">00:00</span>
+			</div>
+		</div>
+		</div>
+		<div class="mb-progress-wrap">
+			<div class="ui-slider js-player-setOpsition anim-slider">
+				<div class="ui-slider-range js-player-loaded" style="width:0;">
+				</div>
+				<div class="ui-slider-progress js-player-position" style="width:0;">
+				</div>
+				<div class="ui-slider-handle-wrap">
+					<span class="ui-slider-handle js-player-position-slider" style="left:0;">
+						<span></span>
+					</span>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		<div class="frame-r mbox-list-frame">
+			<div class="mb-song-list-wrap js-list-wrap anmi-wrap">
+				<div class="mb-song-list-bd js-songlist-bd" data-hdiff="110" style="height:206px auto;">
+					<!--播放内容暂无提示-->
+					<div class="song-list-cont js-tab-list" style="opacity: 1; top: -30px; display: block; background-color: white;">
+						<div class="song-default-cont">
+							<div class="song-default">
+								<p class="default-txt">亲，你还没有播放过任何歌曲哦~</p>
+							</div>
+						</div>
+					</div>
+					<div class="mb-song-list-hd">
+						<ul class="list-tab js-list-tab">
+							<li class="curr played paused">
+								<i class="ico-list"></i>
+								<i class="ico-play"></i>播放列表
+								<span style="display:none;" class="numer-list js-history-num">(0)</span>
+							</li>
+							<li class="tab-favor">
+								<i class="ico-love"></i>
+								<i class="ico-play"></i>我喜欢的
+							</li>
+						</ul>
+					</div>
+					<ul class="song-list js-play-list js-search-list"></ul>
+					<div class="list-oper-wrap js-songlist-oper" style="display:none;">
+						<div class="select-all js-list-sel-all" xuan="0">
+							<a href="#" class="vc-btn btn-checkbox"><span class="vc-btn-inner">复选</span></a>全选
+						</div>
+						<div class="list-oper">
+							<a href="#" class="js-remove-list">删除选中</a>
+							<a href="#" class="js-empty-list" style="display:none;">加入列表</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="frame-l mbox-tab-frame" style="height: 316px auto;">
+			<div class="mb-tab-wrap js-tab-wrap">
+				<ul class="list-tab js-list-tab">
+					<li id="history" class="curr played paused">
+						<div class="list-tab-inner">
+							<i class="ico-list"></i>
+							<i class="ico-play"></i>
+							播放列表
+							<span class="numer-list js-history-num">(0)</span>
+						</div>
+					</li>
+					<li id="favor" class="tab-favor">
+						<div class="list-tab-inner">
+							<i class="ico-love"></i>
+							<i class="ico-play"></i>
+							我喜欢的
+						</div>
+					</li>
+					<li id="rand">
+						<div class="list-tab-inner">
+							<i class="ico-music"></i>
+							<i class="ico-play"></i>
+							随便听听
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="mb-recommand-wrap js-recommand-wrap" style="display:none;">
+				<div class="mb-recommand-hd">
+					<span class="mb-title">猜你喜欢</span>
+					<a href="#recommand" class="mb-change js-recommand-change" style="">换一换</a>
+				</div>
+				<div class="mb-recommand-bd">
+					<ul class="recommand-list js-recommand-list"></ul>
+					<a href="javascript:caiplay(0,3);" class="btn-play-all js-360-play-all">播放全部</a>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!--IE6播放器代码-->
+		<object classid="clsid:6BF52A52-394A-11D3-B153-00C04F79FAA6" id="mediaPlayerObj" width="0" height="0" style="display:none">
+			<param name="rate" value="1">
+			<param name="balance" value="0">
+			<param name="currentPosition" value="0">
+			<param name="playCount" value="1">
+			<param name="autoStart" value="true">
+			<param name="currentMarker" value="0">
+			<param name="invokeURLs" value="-1">
+			<param name="volume" value="50">
+			<param name="mute" value="0">
+			<param name="uiMode" value="invisible">
+			<param name="stretchToFit" value="-1">
+			<param name="windowlessVideo" value="-1">
+			<param name="enabled" value="-1">
+			<param name="enableContextMenu" value="0">
+			<param name="fullScreen" value="0">
+			<param name="enableErrorDialogs" value="0">
+		</object>
+		<!--[if(gt IE 9)|!(IE)]-->
+			<div class="effect js-favor-anim"></div>
+		<!--<![endif]-->
+		<div id="feedback">
+			<a href="{cscms:gbooklink}" target="_blank" id="js-feedback-btn">报错</a>
+		</div>
+		<div id="pop_mask_bg" style="display: none;" unselectable="on" class="mod-qiuser-pop-bg">
+		</div>
+		<div id="mod_quc_pop" style="display: none;top: 50%; left: 50%; width: 460px; position: fixed; margin-left: -230px; margin-top: -151.5px;">
+			<div class="mod-quc-top quc-clearfix" style="height: 56px;">
+				<div class="hd">
+					<ul class="js-tab">
+						<li id="other-login" data-target="mod-other-id-login"></li>
+					</ul>
+					<a href="#" class="pop-dia-close" title="关闭"></a>
+				</div>
+			</div>
+<span id='appendhtml'></span>
+<div id="slo_login" class="layui-layer layui-layer-page layui-layer-rim layer-anim" id="layui-layer4" type="page" times="4" showtime="0" contype="string" style="z-index: 2000; width: 330px; top: 50%;margin-top: -200px; left: 50%;margin-left: -175px;display: none;">
+    <div class="layui-layer-title" style="cursor: move;">用户登录</div>
+    <div id="" class="layui-layer-content">
+    <form action="javascript:;" name="loginfrom" id="loginfrom" method="post">
+        <div class="logincontent">
+            <ul>
+                <img src="{cscms:tempurl}images/tx_ico.gif" class="login_ico">
+            </ul>
+            <ul>
+                <li id="info"></li>
+            </ul>
+            <ul class="h50">
+                <input name="username" type="text" class="login_input" id="cscms_name" maxlength="30" placeholder="帐号名">
+            </ul>
+            <ul class="h50">
+                <input name="userpass" type="password" class="login_input" id="cscms_pass" maxlength="30" placeholder="密码" />
+            </ul>
+            <ul>
+                <li class='reg'><a href="{cscms:reglink}" target="_blank">注册新帐号</a>
+                </li>
+                <li class="getpwd"><a href="{cscms:passlink}">取回密码</a>
+                </li>
+            </ul>
+            <ul id="loginbt" class="h50" style="padding-top: 10px;">
+                <input onClick="cscms.loginAdd();" name="button" type="submit" class="login_botton" id="button" value="立即登录" />
+                </li>
+            </ul>
+            <ul id="logind3" style="padding-top: 20px">
+                <a href="{cscms:qqlink}" target="_blank" style="cursor:pointer">
+                    <img src="{cscms:tempurl}images/qq.gif" width=30 height=30 align=absmiddle border=0 />使用QQ登录</a>   
+                <a onClick="javascript:;" style="cursor:pointer">
+                    <img src="{cscms:tempurl}images/wx.gif" width=30 height=30 align=absmiddle style="cursor:pointer" />使用微信登录</a>
+            </ul>
+        </div>
+        <div style="height:20px;"></div>
+    </form>
+    </div><span class="layui-layer-setwin"><a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:showLoginOpen(1);"></a></span><span class="layui-layer-resize"></span>
+</div><style type="text/css">
+    #login_menu_in:hover #login_menu_zi{display: block;}
+</style>
+<script type="text/javascript">
+    $('#slo_login').hide();
+</script>
+<script type="text/javascript">
+    function showLoginOpen(sign){
+        if(sign==0){
+            $('#slo_login').toggle();
+        }else{
+            $('#slo_login').toggle();
+        }
+    }
+    BannerInit();getplaylist();
+    $('.wechat-footer,.wechat-footer2').hover(function () {
+        this.index = layer.tips('<div><img src="{cscms:tempurl}images/gzh.png" style="width:180px;display:block;border:0px"></div>',this, {
+            id:'webcharmsg',
+            tips: 1,
+            time: 0,
+            isOutAnim:false,
+            area: ['210px','200px']
+        });
+    },function(){
+        layer.close(this.index);
+    });
+
+</script>
+		<script type="text/javascript">
+			var web_url = "{cscms:tempurl}";
+			var data_id = "{cscms:lbid}";
+		</script>
+		<script type="text/javascript" src="{cscms:tempurl}song/js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="{cscms:tempurl}song/js/jquery.jplayer.min.js"></script>
+		<script type="text/javascript" src="{cscms:tempurl}song/js/lrc.js"></script>
+		<script type="text/javascript" src="{cscms:tempurl}song/js/common.js"></script>
+	</body>
+</html>
+

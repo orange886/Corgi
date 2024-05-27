@@ -1,0 +1,515 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <title>{cscms:title}</title>
+    <meta name="keywords" content="{cscms:keywords}" />
+    <meta name="description" content="{cscms:description}" />
+    <link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/public.css" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="mobile-agent" content="format=html5" />
+
+
+    
+    <script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+
+<body>
+    {cscms:head}
+
+    <div id="f2"><div style="width:1000px;margin:0 auto;"><iframe marginwidth="0" marginheight="0" src="{cscms:webpath}real/index.php" frameborder="0" width="100%" scrolling="no" height="35" leftmargin="0" topmargin="0"></iframe></div>
+        <div class="page_body" style="overflow: visible;">
+            <div class="index_ct">
+                <div class="index_ct_p1">
+                    <div class="index_ct_p1_left">
+                        <!--分类推荐-->
+                        <div class="recommended">
+                            <div class="recommended-title"> <span>分类推荐</span>
+                            </div>
+                            <div class="recommended-type">
+                                <ul class="clearfix">
+                                	   <li class="recoName0"><a href="javascript:getRecoData(0);" class="on">最新</a></li>
+                                    <li class="recoName-1"><a href="javascript:getRecoData(-1);" >推荐</a></li>
+                                 
+                                    {cscms:class table="dance_list" where="fid=0" sort="xid" order="asc" loop="7"}
+                                    <li class="recoName[class:id]"><a href="javascript:getRecoData([class:id]);">[class:name]</a></li>
+                                    {/cscms:class}
+                                    <li class="recommended-more" style="float:right;margin-right: 0px;"><a id="clsRecoLink" href="{cscms:opt-reco}" id="clstype-more">更多></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="lines"></div>
+                            <div class="clearfix" style="position: relative">
+                                <div id="recommended-recs-box" class="recommended-ct">
+                                    <div class="h10" style="height: 15px;"></div>
+                                    <div class="clearfix">
+                                        <div class="btn-group" style="float: left;_position:static;"> <a id="group_item1" href="#" class="btn index-btn-b btn-background-img">最新舞曲</a>
+                                        </div>
+                                        <div class="index-typeicon">
+                                            <div class="playall" onclick="playall('item1',1);">播放全部</div>
+                                            <div class="addall" onclick="addplaylist('item1',1);">加入播放</div>
+                                            <div class="changeall" id="recommended-cgeall1" onclick="changeOne('item1',1,1);" style="margin-right: 0px;">换一批</div>
+                                        </div>
+                                    </div>
+                                    <div class="h10" style="height: 5px"></div>
+                                    <div class="recommended-list" id="recs-list">
+                                        <ul class="clearfix item1 item1_1">
+                                            {cscms:dance table="dance"  sort="addtime" order="desc" loop="36"}
+                                            <li data-id="[dance:id]">
+                                                <div class="index-music-sm" {if:'[dance:i]'=='1'||'[dance:i]'=='13'||'[dance:i]'=='25'}style="display:none;"{end if}> <span>[dance:name]</span><i class="judgeDate" data="[dance:addtime style=Y/m/d]">[dance:addtime style=m-d]</i>
+                                                </div>
+                                                <div class="index-music-bg"  {if:'[dance:i]'=='1'||'[dance:i]'=='13'||'[dance:i]'=='25'}style="display:block;"{end if}>
+                                                    <div class="index-music-img">
+                                                        <a href="[dance:url zdy=dance,id,play,id]" target="_Pt">
+                                                            <img src="[dance:user zd=logo]" alt="[dance:name]">
+                                                        </a>
+                                                        <p>[dance:zdy zd=dance_list,name,cid]</p>
+                                                    </div>
+                                                    <div class="index-music-ct">
+                                                        <h2 class="index-music-title"><a href="[dance:url zdy=dance,id,play,id]" target="_Pt">[dance:name]</a></h2>
+                                                        <div class="index-music-hit">
+                                                            <p>[dance:hits] <b class="judgeDate" data="[dance:addtime style=Y/m/d]">[dance:addtime style=Y/m/d]</b>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {if:[dance:i]==12}
+                                                </ul>
+                                                <ul class="clearfix item1 item1_2" style="display: none;">
+                                            {end if}
+                                            {if:[dance:i]==24}
+                                                </ul>
+                                                <ul class="clearfix item1 item1_3" style="display: none;">
+                                            {end if}
+                                            {/cscms:dance}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="fgx" style="width:30px;height: 541px;background:url('{cscms:indextempurl}images/line_bg.png') 15px 0px repeat-y;float:left; overflow: hidden;"></div>
+                                <div id="recommended-redq-box" class="recommended-ct">
+                                    <div class="h10" style="height: 15px;"></div>
+                                    <div class="clearfix">
+                                        <div class="btn-group" style="float: left;_position:static;"> <a id="group_item2" href="#" class="btn index-btn-b btn-background-img">最热舞曲</a>
+                                        </div>
+                                        <div class="index-typeicon">
+                                            <div class="playall" onclick="playall('item2',1);">播放全部</div>
+                                            <div class="addall" onclick="addplaylist('item2',1);">加入播放</div>
+                                            <div class="changeall" id="recommended-cgeall2" onclick="changeOne('item2',1,2);" style="margin-right: 0px;">换一批</div>
+                                        </div>
+                                    </div>
+                                    <div class="h10" style="height: 5px"></div>
+                                    <div class="recommended-list" id="redq-list">
+                                        <ul class="clearfix item2 item2_1">
+                                            {cscms:dance table="dance"  sort="hits" order="desc" loop="36"}
+                                            <li data-id="[dance:id]">
+                                                <div class="index-music-sm"  {if:'[dance:i]'=='1'||'[dance:i]'=='13'||'[dance:i]'=='25'}style="display:none;"{end if}> <span>[dance:name]</span><i class="judgeDate" data="[dance:addtime style=Y/m/d]">[dance:addtime style=m-d]</i>
+                                                </div>
+                                                <div class="index-music-bg"  {if:'[dance:i]'=='1'||'[dance:i]'=='13'||'[dance:i]'=='25'}style="display:block;"{end if}>
+                                                    <div class="index-music-img">
+                                                        <a href="[dance:url zdy=dance,id,play,id]" target="_Pt">
+                                                            <img src="[dance:user zd=logo]" alt="[dance:name]">
+                                                        </a>
+                                                        <p>[dance:zdy zd=dance_list,name,cid]</p>
+                                                    </div>
+                                                    <div class="index-music-ct">
+                                                        <h2 class="index-music-title"><a href="[dance:url zdy=dance,id,play,id]" target="_Pt">[dance:name]</a></h2>
+                                                        <div class="index-music-hit">
+                                                            <p>[dance:hits] <b class="judgeDate" data="[dance:addtime style=Y/m/d]">[dance:addtime style=Y/m/d]</b>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {if:[dance:i]==12}
+                                                </ul>
+                                                <ul class="clearfix item2 item2_2" style="display: none;">
+                                            {end if}
+                                            {if:[dance:i]==24}
+                                                </ul>
+                                                <ul class="clearfix item2 item2_3" style="display: none;">
+                                            {end if}
+                                            {/cscms:dance}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h10"></div>
+                        <!--电台-->
+                        <div class="index-radio">
+                            <div class="index-radio-title"> <span>专辑</span>
+                            </div>
+                            <div class="index-radio-type">
+                                <ul class="clearfix">
+                                    <li><a class="zjcls1 on" href="javascript:changeOne('item3',2,3,2);">最新</a>
+                                    </li>
+                                    <li><a class="zjcls2" href="javascript:changeOne('item3',1,3,2);">热门</a>
+                                    </li>
+                                    <li style="margin-left: 25px;">
+                                        <div class="changeall" id="ra-cgeall" onclick="changeOne('item4',1,4)">换一批</div>
+                                    </li>
+                                    <li class="recommended-more" style="float: right;margin-right: 0px;"><a href="{cscmsphp}linkurl('topic','id','',1,'dance');{/cscmsphp}" _href="{cscmsphp}linkurl('topic','hits','',1,'dance');{/cscmsphp}" id="ratype-more">更多></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="lines"></div>
+                            <div class="h10" style="height: 15px"></div>
+                            <div class="index-radio-list">
+                                <div class="item3 item3_1">
+                                    <ul class="item4 item4_1" style="display: block">
+                                        {cscms:topic table="dance_topic" sort="addtime" order="desc" loop="30"}
+                                        <li {if:[topic:i]%5==0}style="margin-right:0px;"{else}style="margin-right:23px;"{end if}>
+                                            <a href="[topic:url zdy=dance,id,topic/show]" title="[topic:name]" target="_Pt">
+                                                <div class="ra-img">
+                                                    <img src="[topic:pic dir=dancetopic]">
+                                                </div>
+                                                <p>    [topic:count zdy=dance,tid,id] 首</p>
+                                                <h2>[topic:name]</h2>
+                                            </a>
+                                        </li>
+                                        {if:[topic:i]==10}
+                                            </ul>
+                                            <ul class="item4 item4_2" style="display: none;">
+                                        {end if}
+                                        {if:[topic:i]==20}
+                                            </ul>
+                                            <ul class="item4 item4_3" style="display: none;">
+                                        {end if}
+                                        {/cscms:topic}
+                                    </ul>
+                                </div>
+                                <div class="item3 item3_2" style="display: none;">
+                                    <ul class="item5 item5_1" style="display: block">
+                                        {cscms:topic table="dance_topic" sort="hits" order="desc" loop="30"}
+                                        <li {if:[topic:i]%5==0}style="margin-right:0px;"{else}style="margin-right:23px;"{end if}>
+                                            <a href="[topic:url zdy=dance,id,topic/show]" title="[topic:name]" target="_Pt">
+                                                <div class="ra-img">
+                                                    <img src="[topic:pic dir=dancetopic]">
+                                                </div>
+                                                <p>    [topic:count zdy=dance,tid,id] 首</p>
+                                                <h2>[topic:name]</h2>
+                                            </a>
+                                        </li>
+                                        {if:[topic:i]==10}
+                                            </ul>
+                                            <ul class="item5 item5_2" style="display: none;">
+                                        {end if}
+                                        {if:[topic:i]==20}
+                                            </ul>
+                                            <ul class="item5 item5_3" style="display: none;">
+                                        {end if}
+                                        {/cscms:topic}
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="index_ct_p1_right">
+                        <div class="index_ct_p1_right_ct">
+                            <!--右侧-->
+                            <!--U盘广告-->
+                            <!--电台右侧广告-->
+                            <style>
+                                #playBox {width: 220px; height: 92px;}
+                                #playBox .smalltitle {width: 220px;}
+                            </style>
+                            <div id="playBox">
+                                <div class="pre" style="display:none"></div>
+                                <div class="next" style="display:none"></div>
+                                <div class="smalltitle" style="display:none">
+                                    <ul>
+                                        <li class="thistitle"></li>
+                                    </ul>
+                                </div>
+                                <ul class="oUlplay">
+                                    <li>
+                                        <a href="javascript:;" target="_blank">
+                                            <img src="{cscms:tempurl}images/upan.png" width=220 height=92>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class='h15'></div>
+                            <div class="lines"></div>
+                            <div class="h10"></div>
+                            <!--APP-->
+                            <!--首页app-->
+                            <div class="index_app">
+                                <a href="/" target="_blank" title=" APP">
+                                    <img src="{cscms:tempurl}images/radio_upan.gif" alt="APP" width="207" height="37">
+                                </a>
+                            </div>
+                            <div class="h10"></div>
+                            <div class="lines"></div>
+                            <div class="h10"></div>
+                            <!--热门-->
+                            <div class="index-hot">
+                                <div class="index-hot-title"><span><a href='{cscmsphp}linkurl('topic','hits','',1,'dance');{/cscmsphp}' style='text-decoration: none; color:#999999'>热门专辑</a></span>
+                                </div>
+                                <div class="changeall" id="hot-cgeall" onclick="changeOne('item6',1,5)">换一批</div>
+                            </div>
+                            <div class="h10"></div>
+                            <div class="lines"></div>
+                            <div class="h10" style="height: 20px"></div>
+                            <div class="index-hot-list">
+                                <ul style="display: block" class="item6 item6_1">
+                                    {cscms:topic table="dance_topic" sort="hits" order="desc" loop="45"}
+                                    <li style="overflow: hidden;"> <a href="[topic:url zdy=dance,id,topic/show]" title="[topic:name]" target="_blank">[topic:name]([topic:count zdy=dance,tid,id])</a></li>
+                                    {if:[topic:i]==15}
+                                            </ul>
+                                            <ul class="item6 item6_2" style="display: none;">
+                                        {end if}
+                                        {if:[topic:i]==30}
+                                            </ul>
+                                            <ul class="item6 item6_3" style="display: none;">
+                                        {end if}
+                                    {/cscms:topic}
+                                </ul>
+                            </div>
+                            <div class="h10"></div>
+                            <div class="h10"></div>
+                            <!--排行榜-->
+                            <div style=" margin: 0 auto;padding: 0;height: 37px;width: 218px;">
+                                <div class="index-rank-title"> <span>排行榜</span>
+                                </div>
+                                <div class="index-rank-type">
+                                    <ul class="clearfix">
+                                        <li><a href="javascript:changeOne('item7',2,6,2)" class="rankcs1 on">舞曲</a>
+                                        </li>
+                                        <li><a href="javascript:changeOne('item7',1,6,2)" class="rankcs2">喊麦</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="h10"></div>
+                            <div class="lines"></div>
+                            <div class="h10" style="height: 15px"></div>
+                            <div class="index-rank-list-type item7 item7_1">
+                                <div style=" margin: 0 auto;padding: 0; width: 176px;">
+                                    <div class="btn-group">
+                                        <div onclick="changeOne('item8',3,7)" class="btn index-btn-sl btn-background-img-sm btnrank1">周榜</div>
+                                        <div onclick="changeOne('item8',1,7)" class="btn index-btn-sm btnrank2" style="margin:0 2px 0 1px;">月榜</div>
+                                        <div onclick="changeOne('item8',2,7)" class="btn index-btn-sr btnrank3">季榜</div>
+                                    </div>
+                                </div>
+                                <div class="h10"></div>
+ 
+                               <!-- 周榜 -->
+
+                                <div class="rank-list item8 item8_1">
+                                {cscms:dance table="dance" cid="1,2,3,4,5,6,7,8" sort="zhits" order="desc" loop="10"}
+                                    <dl> <dt class="num[dance:i]"></dt>
+                                        <dd class="redline"> <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                                        </dd>
+                                    </dl>
+                                {/cscms:dance}
+                                </div>
+                                <!-- 月榜 -->
+
+                                <div class="rank-list item8 item8_2" style="display: none;">
+                                {cscms:dance table="dance" cid="1,2,3,4,5,6,7,8" sort="yhits" order="desc" loop="10"}
+                                    <dl> <dt class="num[dance:i]"></dt>
+                                        <dd class="redline"> <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                                        </dd>
+                                    </dl>
+                                {/cscms:dance}
+                                </div>
+                                <!-- 季榜 -->
+                                <div class="rank-list item8 item8_3" style="display: none;">
+                                {cscms:dance table="dance" cid="1,2,3,4,5,6,7,8" sort="hits" order="desc" loop="10"}
+                                    <dl> <dt class="num[dance:i]"></dt>
+                                        <dd class="redline"> <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                                        </dd>
+                                    </dl>
+                                {/cscms:dance}
+                                </div>
+                            </div>
+                            <div class="index-rank-list-type item7 item7_2" style="display:none;">
+                                <div style=" margin: 0 auto;padding: 0; width: 176px;">
+                                    <div class="btn-group">
+                                        <div onclick="changeOne('item9',3,8)" class="btn index-btn-sl btn-background-img-sm btn2rank1">周榜</div>
+                                        <div onclick="changeOne('item9',1,8)" class="btn index-btn-sm btn2rank2" style="margin:0 2px 0 1px;">月榜</div>
+                                        <div onclick="changeOne('item9',2,8)" class="btn index-btn-sr btn2rank3">季榜</div>
+                                    </div>
+                                </div>
+                                <div class="h10"></div>
+                                <!-- 周榜 -->
+                                <div class="rank-list item9 item9_1">
+                                {cscms:dance table="dance" cid="9" sort="zhits" order="desc" loop="10"}
+                                    <dl> <dt class="num[dance:i]"></dt>
+                                        <dd class="redline"> <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                                        </dd>
+                                    </dl>
+                                {/cscms:dance}
+                                </div>
+                                <!-- 月榜 -->
+                                <div class="rank-list item9 item9_2" style="display: none;">
+                                {cscms:dance table="dance" cid="9" sort="yhits" order="desc" loop="10"}
+                                    <dl> <dt class="num[dance:i]"></dt>
+                                        <dd class="redline"> <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                                        </dd>
+                                    </dl>
+                                {/cscms:dance}
+                                </div>
+                                <!-- 季榜 -->
+                                <div class="rank-list item9 item9_3" style="display: none;">
+                                {cscms:dance table="dance" cid="9" sort="hits" order="desc" loop="10"}
+                                    <dl> <dt class="num[dance:i]"></dt>
+                                        <dd class="redline"> <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                                        </dd>
+                                    </dl>
+                                {/cscms:dance}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h10"></div>
+                <div class="index_ct_p2">
+                    <div class="index-radio">
+                        <div class="index-producer-title"> <span>音乐制作人</span>
+                        </div>
+                        <div class="index-radio-type">
+                            <ul class="clearfix">
+                                <li><a href="javascript:changeOne('item10',2,9,2);" class="rzid1 on">人气最高</a>
+                                </li>
+                                <li><a href="javascript:changeOne('item10',1,9,2);" class="rzid2">最新加入</a>
+                                </li>
+                                <li style="margin-left: 25px;">
+                                    <div class="changeall" id="pcer-cgeall" onclick="changeOne('item11',1,10)">换一批</div>
+                                </li>
+                                <li class="recommended-more" style="float: right;margin-right: 0px;"><a href="{cscms:userlink}" _href="{cscms:userlink}" id="pcertype-more">更多></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lines"></div>
+                        <div class="h10" style="height: 20px;"></div>
+                        <!--音乐制作达人-->
+                        {cscms:user table="user" sort="hits" where="rzid=1 and tid=1" order="desc" loop="1"}
+                        <a href="[user:url ulink=index]" title="{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}" target="_blank" class="best-producer-a">
+                            <div class="best-producer">
+                                <div class="bp-img">
+                                    <img src="[user:logo dir=logo]">
+                                </div>
+                                <div class="h10" style="height: 15px;"></div>
+                                <p style="color: #FFFFFF;*margin-left: 20px;">{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}</p>
+                                <div class="h10" style="height: 15px;"></div> <span class="bp-hits">[user:hits]</span>
+                                <span class="bp-musicicon">[user:count zdy=fans,uida,id]</span>
+                            </div>
+                            <div class="best-producer-bg"></div>
+                        </a>
+                        {/cscms:user}
+                        <!--左边-->
+                        <style type="text/css">
+                            .rzidli:hover .producer-detail-box{display: block;}
+                        </style>
+                        <div class="index-radio-list item10 item10_1">
+                            <ul class="clearfix item11 item11_1" style="display: block">
+                            {cscms:user table="user" sort="hits" where="rzid=1" order="desc" loop="30"}
+                                <li class="rzidli" {if:[user:i]%5==0}style="margin-right:0;"{end if} data-id="[user:id]">
+                                    <div class="ra-img">
+                                        <img src="[user:logo dir=logo]">
+                                    </div>
+                                    <p class="hits-white">    [user:hits]</p>
+                                    <h2>{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}</h2>
+                                    <div class="producer-detail-box">
+                                        <div class="ra-img" style="float: left">
+                                            <a href="[user:url ulink=index]" title="{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}" target="_blank">
+                                                <img src="[user:logo dir=logo]">
+                                            </a>
+                                        </div>
+                                        <div class="ra-hover-detail">
+                                            <h3>{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}</h3>
+                                            <h3>人气: [user:hits]</h3>
+                                            <h3>关注: [user:count zdy=fans,uida,id]</h3>
+                                            <h3>地区: {if:'[user:city]'==''}暂无{else}[user:city]{end if}</h3>
+                                        </div>
+                                        <div class="ra-hover-music">
+                                            {cscmstype:dance table="dance" where="uid=[user:id]" sort="addtime" order="desc" loop="4"}
+                                            <h4><a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a></h4>
+                                            {/cscmstype:dance}
+                                        </div>
+                                    </div>
+                                </li>
+                                {if:[user:i]==10}
+                                    </ul>
+                                    <ul class="item11 item11_2" style="display: none;">
+                                {end if}
+                                {if:[user:i]==20}
+                                    </ul>
+                                    <ul class="item11 item11_3" style="display: none;">
+                                {end if}
+                            {/cscms:user}
+                            </ul>
+                        </div>
+                        <div class="index-radio-list item10 item10_2" style="display:none;">
+                            <ul class="clearfix item12 item12_1" style="display: block">
+                            {cscms:user table="user" sort="addtime" where="rzid=1" order="desc" loop="30"}
+                                <li class="rzidli" {if:[user:i]%5==0}style="margin-right:0;"{end if} data-id="[user:id]">
+                                    <div class="ra-img">
+                                        <img src="[user:logo dir=logo]">
+                                    </div>
+                                    <p class="hits-white">    [user:hits]</p>
+                                    <h2>{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}</h2>
+                                    <div class="producer-detail-box" >
+                                        <div class="ra-img" style="float: left">
+                                            <a href="[user:url ulink=index]" title="{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}" target="_blank">
+                                                <img src="[user:logo dir=logo]">
+                                            </a>
+                                        </div>
+                                        <div class="ra-hover-detail">
+                                            <h3>{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}</h3>
+                                            <h3>人气: [user:hits]</h3>
+                                            <h3>关注: [user:count zdy=fans,uida,id]</h3>
+                                            <h3>地区: {if:'[user:city]'==''}暂无{else}[user:city]{end if}</h3>
+                                        </div>
+                                        <div class="ra-hover-music">
+                                            {cscmstype:dance table="dance" where="uid=[user:id]" sort="addtime" order="desc" loop="5"}
+                                            <h4><a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a></h4>
+                                            {/cscmstype:dance}
+                                        </div>
+                                    </div>
+                                </li>
+                                {if:[user:i]==10}
+                                    </ul>
+                                    <ul class="item12 item12_2" style="display: none;">
+                                {end if}
+                                {if:[user:i]==20}
+                                    </ul>
+                                    <ul class="item12 item12_3" style="display: none;">
+                                {end if}
+                            {/cscms:user}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="h10" style="height:0px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="link">
+        <div class="link_title">友情链接</div> 
+        {cscms:link table="link" where="sid=1" sort="xid" order="desc"}
+        <a href="[link:url]" target="_blank">[link:name]</a> 
+        {/cscms:link}
+    </div>
+    {cscms:bottom}
+</body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        judgeDate();
+        $('.recommended-list li').hover(function() {
+            $(this).children('.index-music-sm').hide();
+            $(this).children('.index-music-bg').show();
+            $(this).siblings().children('.index-music-bg').hide();
+            $(this).siblings().children('.index-music-sm').show();
+        });
+    });
+</script>
+</html>

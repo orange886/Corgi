@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="renderer" content="webkit">
+<title>{cscms:title} - 柯基DJ音乐网 www.kejidj.com</title>
+<meta name="keywords" content="{cscms:keywords}">
+<meta name="description" content="{cscms:description}">
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/public.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+</head>
+    <body>
+        
+
+        
+<style>
+    body{ background-color:#1f2432 }
+    .page_bg{ background: url({cscms:tempurl}images/downs_bg3.gif) no-repeat;background-color:#1f2432; width: 520px;margin: 0 auto; }
+    .downpage{ width: 520px; margin: 0 auto} 
+    .downpage_ct{ padding: 20px; padding-top: 10px }
+    .vvvdjtime {text-align:left; border: 1px solid #333;background: #13161E;line-height: 24px;text-decoration: none; width: 25%}
+    .vvvdjtime .pad{ padding-left:10px;}
+    .yzcode{width:70px; font-size: 14px; color: #333333; height:30px; padding: 0px; margin: 0px; display: block}
+    #yzdl{ width: 60px;height:30px; text-align: center; padding: 0px; margin: 0px; display: block; color: #ffffff; border:0px; background-color:#c43310 }
+    .lines11{ background-color: #2f3645; height: 1px; overflow: hidden}
+    .lines21{ background-color: #222833; height: 1px; overflow: hidden}
+</style>
+<div class="page_bg">
+    <div style="width:100%; margin:0 auto; max-width:520px;">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>  
+                <td width="20" height="60">
+                </td><td><a href="/" target="_blank"><img src="{cscms:tempurl}images/logo.png" alt="{cscms:webname}" border="0" style="border: none; width: 200px;"></a></td>
+                <td class="font005" align="right">编号:<font size="5" color="#00CCFF">[dance:id]</font></td>  <td width="20"> 
+            </td></tr>
+        </tbody></table>
+    </div>
+    <div class="downpage">
+        <div class="lines11"></div>
+        <div class="lines21"></div>
+    </div>
+    <div class="downpage"><div class="downpage_ct">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>             
+                    <td><div class="path_ct">下载： <a href="[dance:url zdy=dance,id,play,id]" title="[dance:name]" target="_Pt">[dance:name]</a></div></td>
+                </tr>
+            </tbody></table>
+
+            <div style="height:10px; overflow:hidden"></div>
+            <table width="100%" border="0" cellpadding="1" cellspacing="1">
+                <tbody>
+                <tr>
+                    <td class="vvvdjtime"><div class="pad">格式:<font color="#00CCFF">Mp3</font></div></td>
+                    <td class="vvvdjtime"><div class="pad">时长:<font color="#00CCFF">[dance:sc]</font></div></td>
+                    <td class="vvvdjtime"><div class="pad">大小:<font color="#00CCFF">[dance:dx]</font></div></td>
+                    <td class="vvvdjtime" title="CBR(Constants Bit Rate)固定比特率编码"><div class="pad">音质:<font color="#00CCFF">320Kbps</font></div></td> 
+                    <!--比特率函数-->
+                    <!--dance:yz-->
+                </tr>
+                <tr>
+                    <td class="vvvdjtime"><div class="pad">[dance:zdy zd=dance_list,name,cid]</div></td>
+                    <td class="vvvdjtime"><div class="pad">日期:[dance:addtime style=Y/m/d]</div></td>
+                    <td class="vvvdjtime"><div class="pad">金币: <span class="corred fbold">[dance:cion]</span> 个</div></td>
+                    <td class="vvvdjtime"><div class="pad">人气:[dance:hits]</div></td>
+                </tr>
+            </tbody></table>
+
+            <div style=" height: 170PX;">
+                <div style="height:75px;"></div>
+                <table height="70" border="0" cellpadding="0" cellspacing="0" style=" width:250px;margin:0 auto; background-color:#101010; border: 1px solid #000000">
+                    <tbody>
+                        <tr>
+                            {if:'{cscms:uid}'=='0'}
+                            <td style="line-height:25px;" align="center"><span id="downstr"><font color="#FFFF00"><b>您还没有登录!</b></font> <span style="background-color: #cc0000"><a href="javascript:parent.showLoginOpen(0);"><font color="#FFFFFF"> 快速登陆 </font></a></span></span> </td>
+                            {else}
+                            <td style="line-height:25px;" align="center"><span id="downstr">下载：<a href="[dance:url link=down,load]" class="red" id="downinfo" style="position:relative"><font color="#FFFF00"><u>保存本地</u></font></a></span> </td>
+                            {end if}
+                        </tr>
+                </tbody></table>
+            </div>
+
+
+
+
+            <div class="lines"></div>
+            <div style="height:10px; overflow:hidden"></div>
+            <table width="95%" border="0" cellpadding="3" cellspacing="3" style="line-height:22px;">
+                <tbody><tr>
+                    <td><span id="downtxt">
+                            <div id="ts5" style="">此舞曲所需金币 <font color="#FFFF00"><b>[dance:cion]</b></font> 个，金币不够？<br><a href="/index.php/user/pay" target="_blank">请<font color="#00CCFF">购买金币</font>或VIP会员.进行下载</a>                  
+                            </div>   
+                        </span>
+
+                    </td>
+                </tr>
+            </tbody></table>           
+            <div class="h10"></div>
+            <div class="lines"></div>
+            <div class="h10"></div>
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                    <td style="line-height:22px;">
+                        <div id="sm5"><font color="#00CCFF">会员权限说明：</font>本站会员分为两类(普通会员)和(VIP会员),所有会员都有下载MP3舞曲的权限。普通会员使用金币下载舞曲(免费舞曲除外).VIP会员下载舞曲不需要金币下载。</div>
+                        <div id="sm6" style="display:none">确定后将<font color="#00CCFF"><b>立即扣除1首</b></font>,<font color="#FFFF00">24小时</font>重复下载此舞曲不会重复扣量,请在24小时内完成下载,超过24小时后你再打开此舞曲下载页面时，会再提示扣量。</div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+    </div>  
+    <div class="downpage">
+        <div class="lines"></div>
+    </div>
+    <div align="center"><br><font color="#8691A2">Copyright © 2021 {cscms:weburl} All rights reserved</font></div>
+    <div style="display:none"></div>
+</div>
+</body></html>

@@ -1,0 +1,109 @@
+    <div id="footer">
+        <div id="footct">
+            <div id="bottom">
+                <div class="btmenu"> <a href="{cscmspage:complaint}" target="_blank">投诉建议</a>  <span>/</span>
+                    <a href="{cscmspage:copyright}" target="_blank">版权说明</a>  <span>/</span>
+                    <a href="{cscmspage:disclaimer}" target="_blank"> 免责声明</a>  <span>/</span>
+                    <a href="{cscmspage:map}" target="_blank">网站地图</a>  <span>/</span>
+                    <a href="{cscmspage:about}" target="_blank">关于我们</a>  <span>/</span>
+                    <a href="{cscmspage:contact}" target="_blank">联系我们</a>  <span>/</span>
+                    <a href="{cscmspage:introductions}" target="_blank">购买下载说明</a> 
+                </div>
+                <div class="linesx" style="clear:both;*height:1px;*overflow: hidden"></div>
+                <div class="btleft">
+                    <ul>
+
+						<li class="zhengshu">
+                        <p></p>
+                        <!--p class="wa_ico"><a href="javascript:void(0);">粤公网安备 44078302000205号</a></p-->
+                        <!--p class="www_ico"><a href="javascript:void(0);">粤网文[2017]4639-1016号</a></p-->
+                        <p class="xkz_ico"><a href="javascript:window.open('http://www.beian.miit.gov.cn/');void(0);" >备案号：{cscms:icp}</a></p>
+                    </li>
+                        <li style="line-height:28px;clear:both;height:70px;">本站舞曲均为DJ原创作品,并自愿上传到本站及网络收集,其所有权为DJ及所属公司拥有,如有侵犯到你的权益,请联系我们
+                            <br>Copyright © 2021 {cscms:weburl} All Rights Reserved.</li>{cscms:stat}
+                    </ul>
+                </div>
+                <div class='btright'>
+                    <table width="240" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td colspan="2" class="khd_title" style='color:#3f3f3f'>{cscms:webname}</td>
+                        </tr>
+                        <tr>
+                            <td valign='top'>
+                                <div class='ios_ico'><a href="javascript:;" target='_blank'>IOS客户端下载</a>
+                                </div>
+                                <div class='and_ico'><a href="javascript:;" target='_blank'>安卓客户端下载</a>
+                                </div>
+                            </td>
+                            <td valign='top' class="wechat-footer2">
+                                <div class='weixin_ico' ><a href="javascript:void(0);">微信公众号</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><span id='appendhtml'></span>
+<div id="slo_login" class="layui-layer layui-layer-page layui-layer-rim layer-anim" id="layui-layer4" type="page" times="4" showtime="0" contype="string" style="z-index: 2000; width: 330px; top: 50%;margin-top: -200px; left: 50%;margin-left: -175px;display: none;">
+    <div class="layui-layer-title" style="cursor: move;">用户登录</div>
+    <div id="" class="layui-layer-content">
+    <form action="javascript:;" name="loginfrom" id="loginfrom" method="post">
+        <div class="logincontent">
+            <ul>
+                <img src="{cscms:tempurl}images/tx_ico.gif" class="login_ico">
+            </ul>
+            <ul>
+                <li id="info"></li>
+            </ul>
+            <ul class="h50">
+                <input name="username" type="text" class="login_input" id="cscms_name" maxlength="30" placeholder="帐号名">
+            </ul>
+            <ul class="h50">
+                <input name="userpass" type="password" class="login_input" id="cscms_pass" maxlength="30" placeholder="密码" />
+            </ul>
+            <ul>
+                <li class='reg'><a href="{cscms:reglink}" target="_blank">注册新帐号</a>
+                </li>
+                <li class="getpwd"><a href="{cscms:passlink}">取回密码</a>
+                </li>
+            </ul>
+            <ul id="loginbt" class="h50" style="padding-top: 10px;">
+                <input onClick="cscms.loginAdd();" name="button" type="submit" class="login_botton" id="button" value="立即登录" />
+                </li>
+            </ul>
+            <ul id="logind3" style="padding-top: 20px">
+                <a href="{cscms:qqlink}" target="_blank" style="cursor:pointer">
+                    <img src="{cscms:tempurl}images/qq.gif" width=30 height=30 align=absmiddle border=0 />使用QQ登录</a>   
+                <a onClick="javascript:;" style="cursor:pointer">
+                    <img src="{cscms:tempurl}images/wx.gif" width=30 height=30 align=absmiddle style="cursor:pointer" />使用微信登录</a>
+            </ul>
+        </div>
+        <div style="height:20px;"></div>
+    </form>
+    </div><span class="layui-layer-setwin"><a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:showLoginOpen(1);"></a></span><span class="layui-layer-resize"></span>
+</div>
+<script type="text/javascript">
+    function showLoginOpen(sign){
+        if(sign==0){
+            $('#slo_login').toggle();
+        }else{
+            $('#slo_login').toggle();
+        }
+    }
+    BannerInit();getplaylist();
+    $('.wechat-footer,.wechat-footer2').hover(function () {
+        this.index = layer.tips('<div><img src="{cscms:tempurl}images/gzh.png" style="width:180px;display:block;border:0px"></div>',this, {
+            id:'webcharmsg',
+            tips: 1,
+            time: 0,
+            isOutAnim:false,
+            area: ['210px','200px']
+        });
+    },function(){
+        layer.close(this.index);
+    });
+
+</script>
+<!--百度自动推送-->
+<!--script type="text/javascript" src="{cscms:path}index.php/sitemap"></script-->

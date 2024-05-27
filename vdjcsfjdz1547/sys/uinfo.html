@@ -1,0 +1,41 @@
+<div id="login_menu_in">
+    <div id="inlogin">
+    	<table width="100" border="0" cellpadding="0" cellspacing="0"> 
+    		<tbody>
+    			<tr><td width="35" align="left">
+    				<a href="[user:url userlink=space]" target="user"><img src="[user:logo dir=logo]" style="width:40px;border:0px;border-radius:50px"></a>
+    			</td>
+    			<td style="padding:0 0 0 10px"><div class="username_menu"><a href="[user:url userlink=space]" target="user">[user:nichen]</a></div><div class="zhuxiao"><a href="javascript:{cscms:logout}">注销</a></div></td></tr>
+    		</tbody>
+    	</table>
+    </div>
+    <div id="login_menu_zi">
+        <div style='clear:both' class="h10"></div>
+        <div class="menu_zi0"><a href="[user:url userlink=space]" target="user">会员中心</a>
+        </div>
+        <div class="menu_zi0"><a href="[user:url userlink=edit]" target="user">修改资料</a>
+        </div>
+        <div class="menu_zi0"><a href="[user:url userlink=pay]" target="user">充值金币</a>
+        </div>
+        <div class="menu_zi0"><a href="[user:url userlink=pay,group]" target="user">升级VIP</a>
+        </div>
+        <div class="menu_zi0"><a href="{cscmsphp}spacelink('fav','dance');{/cscmsphp}" target="user">我的收藏</a>
+        </div>
+        <div class="menu_zi0"><a href="{cscmsphp}spacelink('dance,add','dance');{/cscmsphp}" target="user">上传舞曲</a>
+        </div>
+        <div class="menu_zi0"><a href="[user:url userlink=pay,lists]" target="user">交易记录</a>
+        </div>
+        <div class="menu_zi0"><a href="{cscmsphp}spacelink('down','dance');{/cscmsphp}" target="user">下载记录</a>
+        </div>
+        <div class="menu_zi0"><a href="javascript:{cscms:logout};" class="menu_zi0_logout" style="color: #e1e1e1;border-radius:0px;">退出登录</a>
+        </div>
+        <div style='clear:both' class="h10"></div>
+    </div>
+</div>
+<style type="text/css">
+    #login_menu_in:hover #login_menu_zi{display: block;}
+</style>
+<script type="text/javascript">
+    $('#slo_login').hide();
+</script>
+<div class="clear"></div>

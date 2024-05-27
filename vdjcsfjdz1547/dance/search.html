@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="renderer" content="webkit">
+<title>{cscms:title} - 柯基DJ音乐网 www.kejidj.com</title>
+<meta name="keywords" content="{cscms:keywords}" />
+<meta name="description" content="{cscms:description}" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/public.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="mobile-agent" content="format=html5" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+<style>.nox{ font-size: 12px; color: #464e61;font-weight: bold; }</style>
+</head>
+    <body>
+{cscms:indexhead} 
+<div id='f2'>
+    <div class="page_body">  
+        <div class='clear' style='padding:10px;'>
+                    <table width="100%" border="0"cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td width='40'><div class="path_ico"></div></td>
+                            <td ><div class='path_ct'>目前位置：<a href='{cscms:webpath}'>{cscms:webname}</a> > 舞曲搜索</div><div class='lines'></div></td>
+                        </tr>
+                    </table></div>
+         <div class='search_list_left'>
+            <div class='search_list_left_ct'>
+                <div style='width:200px;'><!--电台右侧广告-->
+<style>#playBox{ width:200px; height:86px;}#playBox .smalltitle {width:200px;}</style><div id="playBox"><div class="pre"  style="display:none" ></div><div class="next"  style="display:none"></div><div class="smalltitle" style="display:none"><ul><li class="thistitle"></li></ul></div><ul class="oUlplay"><li><a href="http:///" target="_blank"><img src="{cscms:tempurl}images/upan.png" width=200  height=86></a></li></ul></div>
+<div class='h15'></div>
+</div>
+                <div class="search_list_title"><table width="160"  border="0" cellpadding="0" cellspacing="0"><tr><td width='130'><p>搜索记录</p></td><td class="sclear" align='right'><a href='javascript:void(0)' onclick="SearchLog.clear();">清空</a></td></tr></table></div>
+                <div class='lines' style='width:200px'></div>
+                <div id="search_log_list" style="padding-left: 5px; width: 200px;"></div>
+                <div class="h15"></div>               
+                <div >
+        <a href="/showapp" target="_blank"><img src="{cscms:tempurl}images/radio_upan.gif"   width="200" border='0'></a>
+</div>
+
+
+                <div class="h20"></div>
+            </div>
+         </div>
+        <div class='search_list_right'>
+            <div class='search_list_ct' style='padding-top: 0px;'>
+                    <div style="line-height:24px; text-indent: 10px; color:#c7c7c7 ">               
+                        共搜索到 <span class='fbold' style="color: #de651d">{cscms:pagedata}</span> 个关于‘<span id='search_add_str'>{cscms:key}<em></em></span>’的记录.
+                     </div>               
+                    <div class='h10'></div>
+                    <div class='lines'></div>
+                    <div class='h10'></div>
+                    <div class="list_fenlei" >
+                        <div class="list_tl">筛选</div>
+                        <div class="list_tr">
+                            <li class='flo{if:'{cscms:cid}'==''}n{else}f{end if}'><a href="{cscmsphp}get_link('dance/search');{/cscmsphp}?key={cscms:key}">全部</a></li>     
+                            {cscms:class table="dance_list" fid="0" loop="6" order="xid asc"}             
+                            <li class='flo{if:'{cscms:cid}'=='[class:id]'}n{else}f{end if}'><a href="{cscmsphp}get_link('dance/search');{/cscmsphp}?key={cscms:key}&cid=[class:id]">[class:name]</a></li>
+                            {/cscms:class}
+                        </div>
+                    </div>
+
+                    <div class="h10"></div>
+                    <div id="hothaomenu">
+                        <a class='pxon' href="">最新更新</a>
+                    </div>
+
+
+                    <table width="730"  border="0" cellpadding="0" cellspacing="0" class="list_musiclist">
+                        <tr>
+                            <th width="20" align="center">选</th>
+                            <th >编号</th>
+                            <th >舞曲名称</th>                       
+                            <th  align="center" width='55'>人气</th>
+                            <th  align="center" width='70'>上传时间</th>
+                            <th  align="center" width='55'>金币</th>
+                            <th >操作</th>
+                        </tr>                       
+                        {cscms:dance table="dance" field="*" pagesize="20" cid="auto" sort="addtime" order="desc"}
+                        <tr class='{if:[dance:i]%2==1}d{else}s{end if}bg'>
+                            <td align="center" class="item item_1">
+                                <input class="sortid xuan" name="id" type="checkbox" checked="" value="[dance:id]">
+                            </td>
+                            <td align="center" width="55">[dance:id]</td>
+                            <td>
+                                <div class="isgood_list">
+                                    <li class='list_play_img'><a href="[dance:url link=play,id]" target="_Pt" title="[dance:name]"><img src="[dance:user zd=logo]"></a></li> 
+                                    <li class='list_play_img_title'>                                  
+                                        <p class='t1'><a href="[dance:url link=play,id]" target="_Pt" >[dance:name]</a></p>
+                                        <p class='t2'>
+                                            <span class='sc_1'><a href="[dance:url zdy=dance,cid,lists,id]" style="color: #666666">[dance:zdy zd=dance_list,name,cid]</a></span>                         
+                                            <span class='sc_2'>TIME [dance:sc] </span>
+                                            <span class='sc_2'>SIZE [dance:dx]</span>
+                                            <span class='sc_2'>[dance:yz]</span>
+                                        </p>
+                                    </li> 
+                                </div>
+                            </td>                       
+                            <td align="center" class="cor999">[dance:hits]</td>
+                            <td align="center" class="cor999">[dance:addtime style=Y/m/d]</td>
+                            <td align="center" ><span class='list_vb'>[dance:cion].金币</span></td>
+                            <td width='80'> <div class='contorl_menu_ico'><span class="icodown" dataid="[dance:id]"><a style="margin-left: 18px;" href="javascript:void(0)" title="下载舞曲" onclick="DownLoad([dance:id])" ></a></span><span class="icofav"><a href="javascript:danceFav([dance:id])" title="收藏舞曲"></a></span></div></TD>
+                        </tr>     
+						{/cscms:dance}
+                    </table>
+                    <div class="list_controllbox">
+                    <div class="list_selectall">
+                        <input type="checkbox" name="selall" onclick="select_all()" id="selall" checked=""><span>全选</span>
+                    </div>
+                    <div class="index-typeicon" style="float: left;">
+                        <div class="playall" onclick="playall('item',1,1)">播放全部</div>
+                        <div class="addall" onclick="addplaylist('item',1,1);">加入播放</div>
+                    </div>
+                </div>
+                    <div class='list_split_page'>
+                   {if:'{cscms:pagenow}'>'1'}<a href="{cscms:pageup}"> < </a>{end if}
+                    {cscms:pagenum len=6}
+                   {if:'{cscms:pagenow}'<'{cscms:pagecout}'}<a href="{cscms:pagedown}"> > </a>{end if}
+                    {cscms:pagelist}
+                    <li class="e"><span>共 <b>{cscms:pagedata}</b> 个记录 {cscms:pagenow}/{cscms:pagecout}页</span></li>
+
+                    </div>
+                                    <div class='h10'></div>
+                
+
+
+
+            </div>
+        </div>
+        <!--左侧结束-->
+         
+    </div>
+</div>
+<script>
+SERSHOW=1;//隐藏快速搜索预览结果
+$("#ser_result").hide();
+var TMPKEY='{cscms:key}';
+$("#key").val(TMPKEY);
+$("#search_add_str").html('<em>'+TMPKEY+'</em>');
+var SearchLog={
+    add:function(curstr){
+         if (curstr != '') {                
+            this.del(curstr);
+            var tmpmusicid = get_cookie("search_log");      
+            tmpmusicid = curstr + "," + tmpmusicid;
+            SetCookie("search_log", tmpmusicid);
+            var t = tmpmusicid.split(",");
+            newstr='';
+            len=t.length;
+            if (len>15){len=15}
+            for (i = 0; i < len; i++) {
+                 if (t[i] != "") {
+                    newstr=newstr+','+t[i];
+                 }
+            }
+            SetCookie("search_log", newstr);
+        }
+    },
+    hav:function(str){
+         var re=false;
+         var tmpmusicid = get_cookie("search_log");
+         tmpmusicid=tmpmusicid+",";
+         var t = tmpmusicid.split(",");
+         for (i = 0; i <= t.length; i++) {
+              if (t[i] != "") {
+                  if (t[i]==str){
+                      re=true;
+                      break;
+                  }
+              }
+         }
+         return re;       
+    },
+    del:function(curstr){
+         var tmpmusicid = get_cookie("search_log");
+         tmpmusicid=tmpmusicid+",";
+         var t = tmpmusicid.split(",");
+         for (i = 0; i <= t.length; i++) {
+              if (t[i] != "") {
+                  if (t[i]==curstr){
+                      t[i]='';                   
+                  }
+              }
+         }
+         newstr='';
+         for (i = 0; i < t.length; i++) {
+              if (t[i] != "") {
+                 newstr=newstr+','+t[i];
+              }
+         }
+         SetCookie("search_log", newstr);
+         this.showlist();
+    },
+    clear:function(){
+        SetCookie("search_log", "");
+        this.showlist()
+    },
+    showlist:function(){    
+       var tmpmusicid = get_cookie("search_log");
+       var s_html='';
+       tmpmusicid=tmpmusicid+',';
+       var t = tmpmusicid.split(",");
+       var j=0     
+       for (i = 0; i < t.length; i++) {              
+                if (t[i] != "") {
+                    j+=1;
+                    j==10?nox=j:nox='0'+j;                 
+                    htmlno="<span class='nox'>"+nox+". </span>";
+                    if (j>10) {break;}                  
+                    s_html+="<div class='search_log_a'><p class='log'>"+htmlno+"<a href='/search/so?key="+t[i]+"' >"+t[i]+"</a></p><p class='del'><a  href='javascript:void(0)' onclick=\"SearchLog.del('"+t[i]+"')\"></a></p></div><div class='lines'></div>";
+                }          
+      }
+      if (s_html==''){
+          s_html="<div class='search_log_a'>无搜索记录</div><div class='lines'></div>"
+      }
+          
+      $('#search_log_list').html(s_html);
+       
+    }
+}
+SearchLog.add(TMPKEY);
+SearchLog.showlist();
+</script>
+        {cscms:indexbottom}
+    </body>    
+</html>

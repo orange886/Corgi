@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <title>{cscms:title} - 柯基DJ音乐网 www.kejidj.com</title>
+    <meta name="keywords" content="{cscms:title}" />
+    <meta name="description" content="{cscms:title} DJ舞曲试听MP3下载" />
+    <link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/public.css?v=1.232" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="mobile-agent" content="format=html5" />
+
+    <link rel="stylesheet" href="/packs/aplayer/dist/APlayer.min.css">
+    <script src="/packs/aplayer/src/APlayer.js"></script>
+
+    <script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+    <script type="text/javascript" src="{cscms:tempurl}js/dance.js"></script>
+    <script type="text/javascript" src="{cscms:indextempurl}js/player.js"></script>
+   
+</head>
+<body>
+    {cscms:indexhead}
+    <script type="text/javascript">
+        var did = [dance:id];
+    </script>
+<div id="f2">
+    <div class="page_body">
+        <div style="padding-left:10px;">
+            <div class="h10"></div>
+            <!--位置-->
+            <div class="clear" style="_margin-right:15px;">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td width="40">
+                                <div class="path_ico"></div>
+                            </td>
+                            <td>
+                                <div class="path_ct">目前位置：<a href="/" target="_blank">{cscms:webname}</a> > <a href="[dance:url zdy=dance,cid,lists,id]" title="[dance:zdy zd=dance_list,name,cid]" target="_blank">[dance:zdy zd=dance_list,name,cid]</a> > <a href="" title="[dance:name]">[dance:name]</a>
+                                </div>
+                                <div class="lines"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="h10"></div>
+        </div>
+        <!--PART.1-->
+        <!--左-->
+        <div class="play_p1_left">
+            <!--U盘广告-->
+            <!--电台右侧广告-->
+            <style>
+                #playBox {width: 212px;height: 89px}
+                #playBox .smalltitle {width: 212px;}
+            </style>
+            <div id="playBox">
+                <div class="pre" style="display:none"></div>
+                <div class="next" style="display:none"></div>
+                <div class="smalltitle" style="display:none">
+                    <ul>
+                        <li class="thistitle"></li>
+                    </ul>
+                </div>
+                <ul class="oUlplay">
+                    <li>
+                        <a href="javascript:;" target="_blank">
+                            <img src="{cscms:tempurl}images/upan.png" width="212" height="89">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="h15"></div>
+            <div class="h10"></div>
+            <!--APP-->
+            <!--播放页APP-->
+            <div class="app">
+                <a href="/" title="APP" target="_blank">
+                    <img src="{cscms:tempurl}images/radio_upan.gif" height="37" width="200">
+                </a>
+            </div>
+            <div class="h20"></div>
+            <!--上周下载榜-->
+            <div class="djshow_ranking_list">
+                <div class="djshow_ranking_list_title">
+                    <p>上周排行榜</p>
+                </div>
+                <div class="h10"></div>
+                <div class="list_hot_down">
+                    {cscms:dance table="dance" sort="zhits" order="desc" loop="10"}
+                    <dl> <dt class="num[dance:i]"></dt>
+                        <dd class="redline"> <a href="[dance:url zdy=dance,id,play,id]" title="[dance:name]">[dance:name]</a>
+                        </dd>
+                    </dl>
+                    {/cscms:dance}
+                </div>
+            </div>
+        </div>
+        <!--中-->
+        <div class="play_p2">
+            <div class="play_background">
+                <img src="[dance:user zd=logo]" class="blur" width="430">
+            </div>
+            <div class="play_ct">
+                <div style="background: rgba(0,0,0,0.3)">
+                    <h1>[dance:name]</h1>
+                    <div id="media" style="height:66px"> <!--  background：#000  -->
+                <div id="player1" class="aplayer"></div>
+                 <script>
+                   var ap1 = new APlayer({
+                   element: document.getElementById('player1'),
+                   narrow: false,
+                   autoplay: true,
+                   showlrc: false,
+                   music: {
+                   title: '[dance:name]',
+                   author: '[dance:user zd=nichen]',
+                   url: '{cscmsphp}annexlink("[dance:zdy zd=dance_server,purl,fid][dance:purl]");{/cscmsphp}',
+                   pic: '[dance:user zd=logo]'
+                   }
+                   });
+                   ap1.init();
+                   //事件绑定播放完毕
+                   
+                    
+                   </script>        	
+                        	
+                        <!--[dance:player]-->
+                    </div>
+                </div>
+                <div class="play_ct_bg" style="padding-bottom: 1px">
+                    <div class="h10"></div>
+                    <div class="play_detail" align="center">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <!--<td width="120" align="center">-->
+                                    <!--    <img src="[dance:user zd=logo]" style="width:70px; height: 70px; border: 0px;border-radius: 50%">-->
+                                    <!--</td>-->
+                                    <td>
+                                        <table width="340" border="0" cellpadding="0" cellspacing="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td height="26">
+                                                        <div class="borp1">编号：[dance:id]</div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="borp1">分类：[dance:zdy zd=dance_list,name,cid]</div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="borp1">金币：<span class="bbico">[dance:cion] 金币</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="26">
+                                                        <div class="borp1">音质：320Kbps</div>   <!--源代码-->[dance:yz]<!--源代码-->
+                                                    </td>
+                                                    <td>
+                                                        <div class="borp1">大小：[dance:dx]</div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="borp1">时间：<span class="judgeDate" data="[dance:addtime style=Y/m/d]">[dance:addtime style=Y/m/d]</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--分享-->
+<!--<div class="bdsharebuttonbox" style="clear:both; opacity: 0.8"><a href="#" class="bds_more" data-cmd="more" style="float:left; display:block; color: #f1f1f1">把这首歌分享到：</a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a></div>-->
+<!--                                    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>-->
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="playcz" style="clear:both"> 
+                        <a class="dl" href="javascript:void(0)" onclick="danceDown('[dance:url link=down,id]')">立即下载</a>
+                        <a class="sc" onclick="danceFav([dance:id])">收藏舞曲</a>
+                    </div>
+                    <div class="h10"></div>
+                </div>
+            </div>
+            <div class="play_line1"></div>
+            <div class="play_line2"></div>
+            <div class="play_list_bg">
+                <div class="playlist_title" id="play_list_title0" style="display:">
+                    <ul class="LMTXYS" id="jp-next-bt-lmt">
+                        <a href="javascript:void(0)" title="下一首" onclick="getNext()"></a>
+                    </ul>
+                    <ul class="LMTSYS">
+                        <a href="javascript:void(0)" title="上一首" onclick="getPre()"></a>
+                    </ul>
+                    <ul class="bofang1" onclick="playLoop();" id="bfsel" style=" margin-right:25px;">
+                        <a href="javascript:void(0)"></a>
+                    </ul>
+                </div>
+                <div class="play_line1"></div>
+                <div class="play_line2"></div>
+                <div class="playlist">
+                    <div class="playlist_menu" id="playlist_menu0">
+                        <ul>
+                            <li onclick="playShowMenu(0)" class="pt0 pton">播放列表</li>
+                            <li onclick="playShowMenu(1)" class="pt1 ptoff">历史记录</li>
+                            <li onclick="playShowMenu(2)" class="pt2 ptoff">收藏舞曲</li>
+                            <li onclick="playShowMenu(3)" class="pt3 ptoff">最新舞曲</li>
+                            <li onclick="playShowMenu(4)" class="pt4 ptoff">推荐舞曲</li>
+                            <li onclick="playShowMenu(5)" class="pt5 ptoff">他人下载中</li>
+                            <li onclick="playShowMenu(6)" class="pt6 ptoff">他人播放中</li>
+                            <li onclick="playShowMenu(7)" class="pt7 ptoff">今日热播</li>
+                            <li onclick="playShowMenu(8)" class="pt8 ptoff">本周热播</li>
+                        </ul>
+                    </div>
+                    <div id="playlist_ct">
+                        <div id="playlist_ct1">
+                            
+                        </div>
+                        <div id="playlist_ct2">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="play_p1_right">
+            <table width="300" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td valign="top" height="250">
+                            <img src="{cscms:tempurl}images/vipad.png" style="width: 100%;height: 100%" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="h15"></div>
+            <table width="300" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td valign="top" height="250">
+                            <img src="{cscms:tempurl}images/F001Nl1Q5EeU000fyJan.jpg" style="width: 100%;height: 100%" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="h15"></div>
+            <div class="play_hot_remix">
+                <div class="play-hot">
+                    <div class="play-hot-title"><span>热门专辑</span>
+                    </div>
+                    <div class="changeall" id="hot-cgeall" onclick="changeOne('item6',1,5)">换一批</div>
+                </div>
+                <div class="h10"></div>
+                <div class="lines"></div>
+                <div class="h15"></div>
+                <div class="play-hot-list" id="hot-list" data-cge="1">
+                    <ul class="item6 item6_1">
+                        {cscms:topic table="dance_topic" sort="hits" order="desc" loop="48"}
+                        <li style="overflow: hidden;"> <a href="[topic:url zdy=dance,id,topic/show]" title="[topic:name]" target="_blank">[topic:name]([topic:count zdy=dance,tid,id])</a></li>
+                        {if:[topic:i]==16}
+                                </ul>
+                                <ul class="item6 item6_2" style="display: none;">
+                            {end if}
+                            {if:[topic:i]==32}
+                                </ul>
+                                <ul class="item6 item6_3" style="display: none;">
+                            {end if}
+                        {/cscms:topic}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+		                <div class="h10"></div>
+        <div class="clear:bold">
+
+            <ul style="padding: 1px; margin: 15px; padding-bottom:10px; margin-top: 5px;">
+                <div>
+                    <img src="{cscms:tempurl}images/bannerpic1.gif" style="width: 100%;height: 100px" />
+                </div>
+            </ul>
+        </div>
+        <div class="play_p3">
+            <table width="650" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td height="50">
+                            <div class="play_love"></div>
+                        </td>
+                        <td>
+                            <div class="play-typeicon">
+                                <li class="playall" onclick="playall('item1',1,2);">播放全部</li>
+                                <li class="addall" onclick="addplaylist('item1',1,2);">加入播放</li>
+                                <li class="changeall" id="recommended-cgeall1" onclick="changeOne('item1',1,11);" style="margin-right: 0px;">换一批</li>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="lines"></div>
+            <div class="play_recommended-list item1 item1_1">
+                <ul class="clearfix">
+            {cscms:dance table="dance" sort="addtime" order="desc" loop="54"}
+                    <li data-id="[dance:id]">
+                        <div class="play-music-sm"  {if:[dance:i]%9==1}style="display:none;"{end if}> <span>[dance:name]</span>
+                        </div>
+                        <div class="play-music-bg" style="{if:[dance:i]%9==1}display:block;{end if}">
+                            <div class="play-music-img">
+                                <a href="[dance:url zdy=dance,id,play,id]" style="text-decoration: none;">
+                                    <img src="[dance:user zd=logo]" alt="[dance:name]">
+                                </a>
+                                <p>[dance:zdy zd=dance_list,name,cid]</p>
+                            </div>
+                            <div class="play-music-ct">
+                                <h2 class="play-music-title">
+                                    <a href="[dance:url zdy=dance,id,play,id]">[dance:name]</a>
+                                </h2>
+                                <div class="play-music-hit">
+                                    <p>[dance:hits]</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+            {if:[dance:i]==9}
+                </ul>
+            </div>
+            <div class="play_recommended-list item1 item1_1" style="margin-left: 20px">
+                <ul class="clearfix">
+            {end if}
+            {if:[dance:i]==18}
+                </ul>
+            </div>
+            <div class="play_recommended-list item1 item1_2" style="display: none;">
+                <ul class="clearfix">
+            {end if}
+            {if:[dance:i]==27}
+                </ul>
+            </div>
+            <div class="play_recommended-list item1 item1_2" style="display: none;margin-left: 20px">
+                <ul class="clearfix">
+            {end if}
+            {if:[dance:i]==36}
+                </ul>
+            </div>
+            <div class="play_recommended-list item1 item1_3" style="display: none;">
+                <ul class="clearfix">
+            {end if}
+            {if:[dance:i]==45}
+                </ul>
+            </div>
+            <div class="play_recommended-list item1 item1_3" style="display: none;margin-left: 20px">
+                <ul class="clearfix">
+            {end if}
+        {/cscms:dance}
+            </ul>
+        </div>
+    </div>
+    <div class="play_p4">
+        <ul class="clearfix">
+            {cscms:user table="user" sort="addtime" where="rzid=1" order="desc" loop="9"}
+            <li style="{if:'[user:i]'=='1'}height:196px;width:196px;margin-left: 0px;{end if}margin-top: 0px;{if:'[user:i]'=='4'||'[user:i]'=='7'}margin-left: 0px{end if}">
+                <div class="ra-img" {if:'[user:i]'=='1'}style="height:196px;width:196px;"{end if}>
+                    <a href="[user:url ulink=index]" target="_Pt" title="{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}">
+                        <img src="[user:logo dir=logo]" {if:'[user:i]'=='1'}style="height:196px;width:196px;"{end if}>
+                    </a>
+                </div>
+                <p {if:'[user:i]'=='1'}style="width:196px;"{end if}>{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}</p>
+            </li>
+            {/cscms:user}
+        </ul>
+    </div>
+</div>
+<div id="playload" style="display: none;"><div style="text-align: center;padding: 20px 0px"><img src="{cscms:tempurl}images/loadvvvdj.gif" /></div></div>
+</div>
+    {cscms:indexbottom}
+<script>bfqzt();</script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            addrplist([dance:id]);
+            addrplist([dance:id],1);
+            playShowMenu(0);
+            $('.play_recommended-list li').hover(function() {
+                $(this).children('.play-music-sm').hide();
+                $(this).children('.play-music-bg').show();
+                $(this).siblings().children('.play-music-bg').hide();
+                $(this).siblings().children('.play-music-sm').show();
+            });
+        });
+    </script>
+</body>
+</html>

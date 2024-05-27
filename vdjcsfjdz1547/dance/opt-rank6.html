@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <title>{cscms:class table="dance_list" where="fid=0" start="6" order="xid asc" loop="1"} [class:name]排行榜{/cscms:class} - {cscms:webname}</title>
+    <meta name="keywords" content="{cscms:keywords}" />
+    <meta name="description" content="{cscms:description}" />
+    <link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/public.css" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="mobile-agent" content="format=html5" />
+
+
+
+    <script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+    {cscms:indexhead}
+
+<div id="f2">
+    <div class="page_body">
+        <div class="clear" style="padding:10px;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td width="40">
+                            <div class="path_ico"></div>
+                        </td>
+                        <td>
+                            <div class="path_ct">目前位置：<a href="/">{cscms:webname}</a> > <a href="">{cscms:class table="dance_list" where="fid=0" start="6" order="xid asc" loop="1"}
+                    [class:name]排行榜
+                    {/cscms:class}</a>
+                            </div>
+                            <div class="lines"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="top_list_left">
+            <div class="top_list_left_ct">
+                <div class="top_list_title">
+                    <table width="160" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td width="130">
+                                    <p>分类榜单</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="top_fl_list" style="width: 200px;">
+                    {cscms:class table="dance_list" where="fid=0" order="xid asc" loop="9"}
+                    <li class="{if:[class:i]==6}top_flon{else}top_floff{end if}"> 
+<a href="{if:'[class:i]'=='1'}{cscms:opt-dance-rank1}{end if}{if:'[class:i]'=='2'}{cscms:opt-dance-rank2}{end if}{if:'[class:i]'=='3'}{cscms:opt-dance-rank3}{end if}{if:'[class:i]'=='4'}{cscms:opt-dance-rank4}{end if}{if:'[class:i]'=='5'}{cscms:opt-dance-rank5}{end if}{if:'[class:i]'=='6'}{cscms:opt-dance-rank6}{end if}{if:'[class:i]'=='7'}{cscms:opt-dance-rank7}{end if}{if:'[class:i]'=='8'}{cscms:opt-dance-rank8}{end if}{if:'[class:i]'=='9'}{cscms:opt-dance-rank9}{end if}{if:'[class:i]'=='10'}{cscms:opt-dance-rank10}{end if}">[class:name]排行榜</a></li>
+                    {/cscms:class}
+                </div>
+                <div class="h15"></div>
+                <div style="width:200px;">
+                    <!--电台右侧广告-->
+                    <style>
+                        #playBox {width: 200px;height: 86px;}#playBox .smalltitle {width: 200px;}
+                    </style>
+                    <div id="playBox">
+                        <div class="pre" style="display:none"></div>
+                        <div class="next" style="display:none"></div>
+                        <div class="smalltitle" style="display:none">
+                            <ul>
+                                <li class="thistitle"></li>
+                            </ul>
+                        </div>
+                        <ul class="oUlplay">
+                            <li>
+                                <a href="http:///" target="_blank">
+                                    <img src="{cscms:tempurl}images/upan.png" width="200" height="86">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="h15"></div>
+                </div>
+                <div class="h20"></div>
+            </div>
+        </div>
+        <div class="search_list_right">
+            <div class="search_list_ct" style="padding-top: 0px;">
+                <div style=" text-indent: 10px; color:#c7c7c7 " class="top_title">
+                    <div style="font-size:24px;">{cscms:class table="dance_list" where="fid=0" start="6" order="xid asc" loop="1"}
+                    [class:name]排行榜
+                    {/cscms:class}</div>
+                    <div style="font-size:12px;color:#666666">最热门的音乐榜</div>
+                </div>
+                <div class="top_time_sel">
+                    
+                </div>
+                <div class="clear"></div>
+                <div class="h10"></div>
+                <div class="lines"></div>
+                <div class="h10"></div>
+                <table width="730" border="0" cellpadding="0" cellspacing="0" class="list_musiclist">
+                    <tbody>
+                        <tr>
+                            <th width="20" align="center">选</th>
+                            <th>编号</th>
+                            <th>舞曲名称</th>
+                            <th align="center" width="55">人气</th>
+                            <th align="center" width="70">上传时间</th>
+                            <th align="center" width="55">金币</th>
+                            <th>操作</th>
+                        </tr>
+                    {cscms:class table="dance_list" where="fid=0" start="6" order="xid asc" loop="1"}
+                        {cscmstype:dance table="dance" where="cid=[class:id]" sort="addtime" pagesize="100"}
+                        <tr class=" dbg ">
+                            <td class="item item_1">
+                                <input class="sortid xuan" name="id" type="checkbox" checked="" value="[dance:id]">
+                            </td>
+                            <td align="center" width="55" class="{if:[dance:i]<4}baning[dance:i]{else}baning4{end if}">[dance:i]</td>
+                            <td>
+                                <div class="isgood_list">
+                                    <li class="list_play_img">
+                                        <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">
+                                            <img src="[dance:user zd=logo]">
+                                        </a>
+                                    </li>
+                                    <li class="list_play_img_title">
+                                        <p class="t1"><a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                                        </p>
+                                        <p class="t2"> <span class="sc_1">TIME [dance:sc]</span>
+                                            <span class="sc_2">SIZE [dance:dx]</span>
+                                            <span class="sc_2">[dance:yz] </span>
+                                            <a heft="javascrpt:void(0)" class="isgood_ico"></a>
+                                        </p>
+                                    </li>
+                                </div>
+                            </td>
+                            <td align="center" class="cor999">[dance:hits]</td>
+                            <td align="center" class="cor999">[dance:addtime style=Y/m/d]</td>
+                            <td align="center"><span class="list_vb">[dance:cion]</span>
+                            </td>
+                            <td width="80">
+                                <div class="contorl_menu_ico" style="text-align: center;">
+                                    <span style="display: inline-block;" class="icodown"><a href="javascript:danceDown('[dance:url zdy=dance,id,down,id]')" target="download" title="下载舞曲"></a></span>
+                                    <span style="display: inline-block;" class="icofav"><a href="javascript:danceFav([dance:id])" title="收藏舞曲"></a></span>
+                                </div>
+                            </td>
+                        </tr>
+                        {/cscmstype:dance}
+                    {/cscms:class}
+                    </tbody>
+                </table>
+                <div class="list_controllbox">
+                    <div class="list_selectall">
+                        <input type="checkbox" name="selall" onclick="select_all()" id="selall" checked=""><span>全选</span>
+                    </div>
+                    <div class="index-typeicon" style="float: left;">
+                        <div class="playall" onclick="playall('item',1,1)">播放全部</div>
+                        <div class="addall" onclick="addplaylist('item',1,1);">加入播放</div>
+                    </div>
+                </div>
+                <div class="h10"></div>
+            </div>
+        </div>
+        <!--左侧结束-->
+    </div>
+</div>
+
+    {cscms:indexbottom}
+    <script type="text/javascript">
+        
+    </script>
+</body>

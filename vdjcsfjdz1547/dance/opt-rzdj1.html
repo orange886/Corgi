@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <title>DJ作者 - {cscms:title}</title>
+    <meta name="keywords" content="{cscms:keywords}" />
+    <meta name="description" content="{cscms:description}" />
+    <link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/public.css" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="mobile-agent" content="format=html5" />
+
+
+
+    <script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+    {cscms:indexhead}
+<div id="f2">
+    <div class="page_body" style="padding:15px 16px;">
+        <!--左侧开始-->
+        <div class="radio_list_left">
+            <!--位置-->
+            <div class="clear" style="width: 730px">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td width="40">
+                                <div class="path_ico"></div>
+                            </td>
+                            <td>
+                                <div class="path_ct">目前位置：<a href="/">{cscms:webname}</a> > <a href="javascript:;" title="DJ舞曲电台">音乐制作人</a> > <a href="">最近加入</a>
+                                <div class="lines"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="h10"></div>
+            <div class="radio_list_left_ct">
+                <div class="radio_list_left_title"> <span>音乐制作人</span>
+                    <ul class="clearfix">
+                        <li class=" flon "> <a href="{cscms:opt-dance-rzdj1}">最近加入</a>
+                        </li>
+                        <li class=" flof "> <a href="{cscms:opt-dance-rzdj2}">人气最高</a>
+                        </li>
+                        <li class=" flof "> <a href="{cscms:opt-dance-rzdj3}">站长推荐</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lines" style="width:730px;"></div>
+                <div class="radio_list_left_content">
+                    <ul class="clearfix" id="radio_data">
+                        {cscms:user table="user" sort="addtime" where="rzid=1" order="desc" loop="24"}
+                        <li data_val="2546" style=" background-color:#1d212e;">
+                            <div class="radio_list_left_c_img">
+                                <a href="[user:url ulink=index]" title=" 2017" target="_Pt" style="text-decoration: none;">
+                                    <img src="[user:logo dir=logo]" width="160px" height="160px">
+                                    <div class="bg-title"> <span class="musicicon">[user:count zdy=dance,uid,id]</span>
+                                        <span class="followicon">[user:hits]</span>
+                                    </div> <span class="radio_list_left_c_playicon"></span>
+                                    <div class="radio_list_left_c_title">{if:'[user:nichen]'==''}[user:name]{else}[user:nichen]{end if}</div>
+                                </a>
+                            </div>
+                        </li>
+                        {if:[user:i]%4==0}
+                        <li class="lines" style="height:2px;width:730px;padding: 0px;"></li>
+                        {end if}
+                        {/cscms:user}
+                    </ul>
+                    
+                    <div class="h10"></div>
+                </div>
+            </div>
+        </div>
+        <!--左侧结束-->
+        <!--右侧开始-->
+        <div class="radio_list_right">
+            <div class="h10" style="height: 5px;"></div>
+            <div class="radio_list_right_ct">
+                <!--DJ广告-->
+                <!--电台右侧广告-->
+                <style>
+                    #playBox {width: 210px;height: 90px;}#playBox .smalltitle {width: 210px;}
+                </style>
+                <div id="playBox">
+                    <div class="pre" style="display:none"></div>
+                    <div class="next" style="display:none"></div>
+                    <div class="smalltitle" style="display:none">
+                        <ul>
+                            <li class="thistitle"></li>
+                        </ul>
+                    </div>
+                    <ul class="oUlplay">
+                        <li>
+                            <a href="javascript:;" target="_blank">
+                                <img src="{cscms:tempurl}images/upan.png" width="210" height="90">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="h15"></div>
+                <div class="lines"></div>
+                <div class="h10"></div>
+                <!--本月下载榜-->
+                <div class="djshow_ranking_list">
+                    <div class="djshow_ranking_list_title">
+                        <p>本月人气榜</p>
+                    </div>
+                    <div class="h10"></div>
+                    <div class="list_hot_down">
+                        {cscms:dance table="dance" sort="yhits" order="desc" loop="10"}
+                        <dl> <dt class="num[dance:i]"></dt>
+                            <dd class="redline" style="width: 164px;"> <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                            </dd>
+                        </dl>
+                        {/cscms:dance}
+                    </div>
+                </div>
+                <div class="h10"></div>
+                <div class="lines"></div>
+                <div class="h10"></div>
+                <!--DJ广告-->
+                <!--电台APP-->
+                <div class="radio_ad">
+                    <div class="radio_ad2">
+                        <a href="javascript:;" title="清风DJ APP" target="_blank">
+                            <img src="{cscms:tempurl}images/radio_upan.gif" height="37" width="200">
+                        </a>
+                    </div>
+                </div>
+                <div class="h10"></div>
+                <div class="lines"></div>
+                <div class="h10"></div>
+                <!--季度下载榜-->
+                <div class="djshow_ranking_list">
+                    <div class="djshow_ranking_list_title">
+                        <p>本月下载榜</p>
+                    </div>
+                    <div class="h10"></div>
+                    <div class="list_hot_down">
+                        {cscms:dance table="dance" sort="xhits" order="desc" loop="10"}
+                        <dl> <dt class="num[dance:i]"></dt>
+                            <dd class="redline" style="width: 164px;"> <a href="[dance:url zdy=dance,id,play,id]" target="_Pt" title="[dance:name]">[dance:name]</a>
+                            </dd>
+                        </dl>
+                        {/cscms:dance}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+    {cscms:indexbottom}
+    <script type="text/javascript">
+        
+    </script>
+</body>
